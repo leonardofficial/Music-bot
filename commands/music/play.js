@@ -1,3 +1,5 @@
+const {isCorrectChannel} = require("../../index");
+
 module.exports = {
     name: 'play',
     aliases: ['p'],
@@ -5,6 +7,11 @@ module.exports = {
     utilisation: '{prefix}play [name/URL]',
 
     execute(client, message, args) {
+        console.log(message.channel["id"])
+
+        const config = require('../../config/bot');
+        if (!(message.channel.id && message.channel.id === config.discord.channel)) return;
+
         if (!message.member.voice.channel) return message.channel.send(`${client.emotes.error} - You're not in a voice channel !`);
 
         if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`${client.emotes.error} - You are not in the same voice channel !`);

@@ -5,6 +5,9 @@ module.exports = {
     utilisation: '{prefix}volume [1-100]',
 
     execute(client, message, args) {
+        const config = require('../../config/bot');
+        if (!(message.channel.id && message.channel.id === config.discord.channel)) return;
+
         if (!message.member.voice.channel) return message.channel.send(`${client.emotes.error} - You're not in a voice channel !`);
 
         if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`${client.emotes.error} - You are not in the same voice channel !`);
