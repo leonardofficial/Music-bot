@@ -7,8 +7,6 @@ module.exports = {
     utilisation: '{prefix}play [name/URL]',
 
     execute(client, message, args) {
-        console.log(message.channel["id"])
-
         const config = require('../../config/bot');
         if (!(message.channel.id && message.channel.id === config.discord.channel)) return;
 
