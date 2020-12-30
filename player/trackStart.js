@@ -1,3 +1,4 @@
 module.exports = (client, message, track) => {
-    message.channel.send(`${client.emotes.music} - Now playing ${track.title} into ${message.member.voice.channel.name} ...`);
+    if (client.player.getQueue(message).previousTracks.length === 0 && client.player.getQueue(message).tracks.length <= 1)
+        message.channel.send(`${client.emotes.music} - Now playing ${track.title} into ${message.member.voice.channel.name} ...`);
 };
