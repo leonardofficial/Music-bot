@@ -7,7 +7,8 @@ const { Player } = require('discord-player');
 
 client.player = new Player(client, {
     leaveOnEmpty: false,
-    leaveOnStop: false
+    leaveOnStop: false,
+    leaveOnEnd: false
 });
 client.config = require('./config/bot');
 client.emotes = client.config.emojis;
